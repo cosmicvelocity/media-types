@@ -9,7 +9,7 @@
     "contenttype"
   ],
   "type": "library",
-  "license": "Apache2",
+  "license": "Apache License 2.0",
   "authors": [
     {
       "name": "Kouichi Machida",
