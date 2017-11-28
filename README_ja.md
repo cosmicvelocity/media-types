@@ -1,27 +1,27 @@
 # cosmicvelocity/media-types
-A PHP library for handling media types.
+メディアタイプを処理するためのPHPライブラリです。
 
-- Supports the RFC 6838 specification.
-- MIME type character string analysis can be performed.
-- Supports automatic detection from filename with built-in mapping list.
-- Supports automatic detection by Fileinfo extension.
+- RFC6838 仕様をサポートします。
+- MIMEタイプ文字列の解析を行えます。
+- 組み込みマッピングリストによるファイル名からの自動検出をサポートします。
+- Fileinfo拡張による自動検出をサポートします。
 
-## Installation
-If composer is used, it can be introduced by adding the following description.
+## インストール
+composer を使っている場合は、下記のような記述を追加する事で導入できます。
 
       "require": {
         "cosmicvelocity/media-types": ">=1.0"
       }
 
-## How to use
-- When detecting from file name.
+## 使い方
+- ファイル名から検出する場合。
 
       $mediaTypes = new PhpArrayMediaTypes();
       $mediaType = $mediaTypes->getMediaType('sample.txt');
       
       $mediaType->getType(); // text
 
-- To detect from your own mapping.
+- 独自のマッピングから検出する場合。
 
       $mediaTypes = new PhpArrayMediaTypes([
          'hoge' => 'application/prs.hoge+xml'
@@ -33,7 +33,7 @@ If composer is used, it can be introduced by adding the following description.
       $mediaType->getTree();  // prs
       $mediaType->getSuffix();  // xml
 
-- When analyzing MIME type.
+- MIMEタイプを解析する場合。
 
       $mediaType = MediaType::fromMime('application/calendar+json; charset=utf-8');
 
@@ -42,7 +42,7 @@ If composer is used, it can be introduced by adding the following description.
       $mediaType->getSuffix();  // json 
       $mediaType->getParameter('charset')->getValue(); // utf-8
 
-- When detecting from a file.
+- ファイルから検出する場合。
 
       $mediaType = MediaType::fromFile('sample.json');
       
