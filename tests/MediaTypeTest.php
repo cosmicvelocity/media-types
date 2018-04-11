@@ -34,7 +34,7 @@ class MediaTypeTest extends TestCase
 
     public function testFromMimeInvalidFormat()
     {
-        $this->expectException('CosmicVelocity\MediaTypes\InvalidMediaTypeException');
+        $this->setExpectedException('CosmicVelocity\MediaTypes\InvalidMediaTypeException');
 
         MediaType::fromMime('text//');
     }
