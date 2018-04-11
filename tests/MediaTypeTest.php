@@ -26,7 +26,7 @@ class MediaTypeTest extends TestCase
     {
         $mediaType = MediaType::fromMime('text/plain; charset=iso-2022-jp; format=flowed; delsp=yes');
 
-        $this->assertInstanceOf(MediaType::class, $mediaType);
+        $this->assertInstanceOf('CosmicVelocity\MediaTypes\MediaType', $mediaType);
         $this->assertEquals('text', $mediaType->getType());
         $this->assertEquals('plain', $mediaType->getSubType());
         $this->assertEquals('iso-2022-jp', $mediaType->getParameter('charset')->getValue());
@@ -34,7 +34,7 @@ class MediaTypeTest extends TestCase
 
     public function testFromMimeInvalidFormat()
     {
-        $this->expectException(InvalidMediaTypeException::class);
+        $this->expectException('CosmicVelocity\MediaTypes\InvalidMediaTypeException');
 
         MediaType::fromMime('text//');
     }
@@ -43,7 +43,7 @@ class MediaTypeTest extends TestCase
     {
         $mediaType = MediaType::fromMime('text/plain; charset="iso-2022-jp"');
 
-        $this->assertInstanceOf(MediaType::class, $mediaType);
+        $this->assertInstanceOf('CosmicVelocity\MediaTypes\MediaType', $mediaType);
         $this->assertEquals('iso-2022-jp', $mediaType->getParameter('charset')->getValue());
     }
 
@@ -51,7 +51,7 @@ class MediaTypeTest extends TestCase
     {
         $mediaType = MediaType::fromMime('application/calendar+json; charset=utf-8');
 
-        $this->assertInstanceOf(MediaType::class, $mediaType);
+        $this->assertInstanceOf('CosmicVelocity\MediaTypes\MediaType', $mediaType);
         $this->assertEquals('application', $mediaType->getType());
         $this->assertEquals('calendar+json', $mediaType->getSubType());
         $this->assertEquals('json', $mediaType->getSuffix());
@@ -62,7 +62,7 @@ class MediaTypeTest extends TestCase
     {
         $mediaType = MediaType::fromMime('application/vnd.adobe.flash-movie');
 
-        $this->assertInstanceOf(MediaType::class, $mediaType);
+        $this->assertInstanceOf('CosmicVelocity\MediaTypes\MediaType', $mediaType);
         $this->assertEquals('application', $mediaType->getType());
         $this->assertEquals('vnd.adobe.flash-movie', $mediaType->getSubType());
         $this->assertEquals('vnd', $mediaType->getTree());
