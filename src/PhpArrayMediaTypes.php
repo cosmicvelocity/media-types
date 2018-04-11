@@ -74,4 +74,27 @@ class PhpArrayMediaTypes implements MediaTypes
         return MediaType::fromMime($this->extensionToType[$extension]);
     }
 
+    /**
+     * Get the extension of the file corresponding to mime type.
+     *
+     * @param string $mimeType Mime type.
+     * @return array Extension that matches Mime type.
+     */
+    public function matchesExtension($mimeType)
+    {
+        $extensions = array_keys($this->extensionToType, $mimeType, true);
+
+        if (0 < count($extensions)) {
+            $extensions = array_map(function ($i) {
+                return strtolower($i);
+            }, $extensions);
+
+            if (sort($extensions, SORT_NATURAL)) {
+                $extensions = array_values($extensions);
+            }
+        }
+
+        return $extensions;
+    }
+
 }

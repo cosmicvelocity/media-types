@@ -13,6 +13,14 @@ use PHPUnit\Framework\TestCase;
 class PhpArrayMediaTypesTest extends TestCase
 {
 
+    public function testGetExtension()
+    {
+        $mediaTypes = new PhpArrayMediaTypes();
+        $extensions = $mediaTypes->matchesExtension('image/jpeg');
+
+        $this->assertEquals(['jpe', 'jpeg', 'jpg'], $extensions);
+    }
+
     public function testGetMediaType()
     {
         $mediaTypes = new PhpArrayMediaTypes();
